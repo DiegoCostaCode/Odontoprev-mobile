@@ -1,9 +1,8 @@
-// Welcome.js
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function Welcome({ route }) {
+export default function Welcome({ navigation, route }) {
     
   const { userId } = route.params;
   const [nome, setNome] = useState('');
@@ -41,7 +40,7 @@ export default function Welcome({ route }) {
       <Text style={styles.welcomeText}>Bem-vindo, {nome}!</Text>
       <Text style={styles.introText}>Estamos felizes em tê-lo conosco.</Text>
 
-      <TouchableOpacity style={styles.nextButton} onPress={() => navigation.navigate('NextScreen')}>
+      <TouchableOpacity style={styles.nextButton} onPress={() => navigation.navigate('tabnavigate')}>
         <Ionicons name="arrow-forward" size={24} color="white" />
       </TouchableOpacity>
     </View>
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center', // Alinhado ao centro
+    alignItems: 'center',
     padding: 20,
   },
   welcomeText: {
@@ -67,11 +66,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   nextButton: {
-    backgroundColor: '#007BFF', // Cor de fundo azul
-    borderRadius: 50, // Arredondado 100%
+    backgroundColor: '#007BFF',
+    borderRadius: 50,
     padding: 15,
     marginTop: 20,
-    alignItems: 'center', // Centraliza o conteúdo
-    justifyContent: 'center', // Centraliza o conteúdo
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

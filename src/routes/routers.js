@@ -5,6 +5,7 @@ import Signup from '../screens/signup';
 import OnBoarding from '../screens/onBoarding';
 import Login from '../screens/login';
 import Welcome from '../screens/welcome';
+import TabRoutes from './tabRoutes';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ export default function Routers() {
         <Stack.Screen name="signup" options={{ headerShown: false }} component={Signup} />
         <Stack.Screen name="login" options={{ headerShown: false }} component={Login} />
         <Stack.Screen name="welcome" options={{ headerShown: false }} component={Welcome} />
+        <Stack.Screen name="tabnavigate" options={{ headerShown: false }} component={TabRoutes} />
       </Stack.Navigator>
     </NavigationContainer>
   );
