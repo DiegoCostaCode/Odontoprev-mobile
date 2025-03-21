@@ -28,4 +28,4 @@ Nosso sistema end-to-end conecta a Odontoprev, clínicas e pacientes em um ecoss
 Essa solução oferece um ambiente centralizado, moderno e intuitivo para controle eficiente da Odontoprev.
 
 ## Diagrama de Arquitetura
-![diagrama-arq](https://github.com/user-attachments/assets/5799bdef-d8f9-4371-bc60-a3b5657989e0)
+![diagrama-arq](https://github.com/user-attachments/assets/aa6e1ea0-c753-4039-ab8f-8dec082cd083)
