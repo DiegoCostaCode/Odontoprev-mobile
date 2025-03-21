@@ -8,11 +8,6 @@
 - **[Thaís Ribeiro Asfur RM553870](https://github.com/ThaiisRibeiro)**: Quality Assurance e API em .NET (Minimal API).
 
 ---
-## 📹 Apresentações
-
-- **Pitch da Proposta Tecnológica:** [Assista aqui](https://youtu.be/SBQ-_mBXdK0)
-
----
 ## 🏥 Problema
 
 Clínicas médicas fraudam atendimentos, exames e cirurgias, enquanto clientes podem utilizar os planos de forma indevida, gerando prejuízos para a Odontoprev.
