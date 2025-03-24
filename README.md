@@ -12,6 +12,14 @@
 
 Clínicas médicas fraudam atendimentos, exames e cirurgias, enquanto clientes podem utilizar os planos de forma indevida, gerando prejuízos para a Odontoprev.
 
+## 🔗 API utilizada
+
+Integração com backend Java: 
+
+- [Backend Java](https://github.com/DiegoCostaCode/Odontoprev-Java)
+  - [API Paciente - controller](https://github.com/DiegoCostaCode/Odontoprev-Java/blob/master/src/main/java/com/example/Odontoprev_Java/controller/PacienteController.java)
+  - [API Usuario/login - controller](https://github.com/DiegoCostaCode/Odontoprev-Java/blob/master/src/main/java/com/example/Odontoprev_Java/controller/UsuarioController.java)
+
 ## 💡 Solução
 
 Nosso sistema end-to-end conecta a Odontoprev, clínicas e pacientes em um ecossistema integrado, facilitando auditorias e controle de informações.
