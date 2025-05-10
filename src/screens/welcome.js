@@ -1,31 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
-export default function Welcome({ navigation, route }) {
-    
-  const { userId } = route.params;
+export default function Welcome({ navigation }) {
   const [nome, setNome] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`/paciente/api/${userId}`);
-        if (!response.ok) {
-          throw new Error('Erro ao buscar dados do usuário');
-        }
-        const data = await response.json();
-        setNome(data.nome);
+        const id = await AsyncStorage.getItem('userId');
+
+        axios.get(`http://localhost:8080/paciente/api/${id}`)
+          .then(response => {
+            setNome(response.data.nome);
+          })
+          .catch(error => {
+            console.error('Erro ao buscar dados do usuário:', error.message);
+          })
+          .finally(() => {
+            setLoading(false);
+          });
+
       } catch (error) {
-        console.error('Erro ao buscar dados do usuário:', error.message);
-      } finally {
+        console.error('Erro ao obter o ID do usuário:', error.message);
         setLoading(false);
       }
     };
 
-    fetchUserData(); 
-  }, [userId]);
+    fetchUserData();
+  }, []);
 
   if (loading) {
     return (

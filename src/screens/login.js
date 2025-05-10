@@ -1,39 +1,50 @@
 // Login.js
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login({ navigation, route }) {
   const [email, setEmail] = useState(route.params?.email || '');
   const [senha, setSenha] = useState('');
 
   const submitLogin = async () => {
-
     const usuarioAuth = {
       email: email,
       senha: senha,
     };
-
+    
+    if (usuarioAuth.email === '' || usuarioAuth.senha === '') {
+      alert('Preencha todos os campos.');
+      return;
+    }
+  
     try {
-      const response = await fetch('/usuario/api/', {
-        method: 'POST',
+      const response = await axios.post('http://localhost:8080/usuario/api/', usuarioAuth, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(usuarioAuth),
       });
-
-      if (!response.ok) {
-        throw new Error('Erro ao realizar login!');
+  
+      if(response.data && response.data.userId && response.data.role && response.status === 200) {
+        const { userId, role } = response.data;
+  
+        await AsyncStorage.setItem('userId', userId.toString());
+        await AsyncStorage.setItem('role', role);
+    
+        console.log('Login realizado com sucesso:', response.data);
+    
+        navigation.navigate('welcome');
+      } else 
+      {
+        alert('Não foi possível realizar o login. Verifique suas credenciais.');
       }
 
-      const data = await response.json();
-      const { id } = data;
-
-      navigation.navigate('welcome', { userId: id });
-
+      
+  
     } catch (error) {
-      console.error('Erro ao realizar login:', error.message);
-      Alert.alert('Erro', error.message);
+      console.error('Erro ao fazer login:', error.message);
+      alert('Falha no login.');
     }
   };
 
