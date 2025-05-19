@@ -82,12 +82,11 @@ const styles = StyleSheet.create({
   },
   introText:{
     width: '100%',
-    fontSize: '16px',
+    fontSize: 16,
     marginBottom: 10,
     color: '#002353',
     fontWeight: 'bold'
   },
-  
   input: {
     height: 50,
     borderColor: '#ccc',
