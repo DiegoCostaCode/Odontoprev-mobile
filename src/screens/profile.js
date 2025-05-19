@@ -27,11 +27,11 @@ export default function Profile({ navigation }) {
 
             setNome(user.nome);
             setCpf(formatCPF(user.cpf));
-            setDataNascimento(formatDate(user.dataNascimento));
+            setDataNascimento(formatDateFromApi(user.dataNascimento));
             setEmail(user.email);
             setTelefone(formatTel(user.telefone));
             setSenha(user.senha);
-            setPlano(user.id_plano.toString());
+            setPlano(user.id_plano);
             })
             .catch((err) => console.error('Erro ao buscar usuário:', err.message));
 
@@ -51,6 +51,12 @@ export default function Profile({ navigation }) {
         if (cleaned.length <= 4) return `${cleaned.slice(0, 2)}/${cleaned.slice(2)}`;
         if (cleaned.length <= 8) return `${cleaned.slice(0, 2)}/${cleaned.slice(2, 4)}/${cleaned.slice(4, 8)}`;
         return `${cleaned.slice(0, 2)}/${cleaned.slice(2, 4)}/${cleaned.slice(4, 8)}`;
+    };
+
+    const formatDateFromApi = (dateStr) => {
+      if (!dateStr) return '';
+      const [year, month, day] = dateStr.split('-');
+      return `${day}/${month}/${year}`;
     };
     
     const formatTel = (phoneString) => {
