@@ -84,7 +84,7 @@ export default function Profile({ navigation }) {
             email,
             telefone: telefone,
             senha,
-            id_plano: parseInt(plano),
+            idPlano: parseInt(plano),
         };
 
         console.log('Dados do paciente:', pacienteData);
